@@ -50,7 +50,7 @@ add constraint fk foreign key (roll_no) references Student(roll_no);
 <br/>
 ```roomsql
 create table Course (
-    course_id varchar(10),
+    course_id varchar(10) primary key,
     course_name varchar(10),
     roll_no int references Student(roll_no)
 );
