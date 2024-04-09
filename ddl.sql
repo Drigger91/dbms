@@ -22,6 +22,11 @@ INSERT INTO Worker (FIRST_NAME, LAST_NAME, SALARY, JOINING_DATE, DEPARTMENT) VAL
 ('Christopher', 'Hernandez', 59000, '2022-12-08 09:15:00', 'IT'),
 ('Amanda', 'Garcia', 47000, '2024-01-22 08:30:00', 'HR');
 
+-- Insert without specifying column names
+
+insert into Worker values 
+(15, 'Sarah', 'Namdev', 158000, '2022-09-30 08:00:00', 'Finance');
+
 SELECT * FROM Worker;
 
 CREATE TABLE Bonus(
@@ -91,3 +96,34 @@ SELECT FIRST_NAME as name from Worker where FIRST_NAME LIKE '%l';
 -- this query will give results where second char is 'h'
 
 SELECT FIRST_NAME as name from Worker where FIRST_NAME LIKE '_h%';
+
+-- Sorting
+
+select SALARY from Worker ORDER BY SALARY asc;
+
+-- Distinct keyword
+
+SELECT DISTINCT DEPARTMENT from Worker;
+
+-- group by, aggregation function should be used while using group by otherwise it'll act as distinct
+
+SELECT department from Worker GROUP BY department;
+
+SELECT department, count(*) from Worker GROUP BY department;
+
+-- Order By
+
+SELECT * from Worker ORDER BY department;
+
+-- Having. Having should only be used in case where group by is getting used. 
+
+SELECT first_name, last_name, SALARY from Worker 
+where department in 
+(SELECT department from Worker GROUP BY department HAVING Avg(SALARY) > 55000 and count(department) > 2)
+
+-- conditional aggegration
+
+SELECT first_name, last_name, salary, department from Worker 
+where department in 
+(SELECT department from Worker GROUP BY department HAVING avg(salary) > 55000 and count(department) > 2)
+
