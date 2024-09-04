@@ -97,6 +97,13 @@ SELECT FIRST_NAME as name from Worker where FIRST_NAME LIKE '%l';
 
 SELECT FIRST_NAME as name from Worker where FIRST_NAME LIKE '_h%';
 
+--REGEX SELECTION
+--name ending with vowels
+select distinct city from station where city REGEXP '[aeiou]$'
+
+--name starting with vowels
+select distinct city from station where city REGEXP '^[aeiou]'
+
 -- Sorting
 
 select SALARY from Worker ORDER BY SALARY asc;

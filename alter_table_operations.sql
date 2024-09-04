@@ -1,0 +1,35 @@
+--Used to alter table, changed/modify the existing data
+
+-- ADD column
+-- syntax :: ALTER TABLE table_name ADD (Operation) COLMN_NAME TYPE CONDITIONS IF ANY
+
+ALTER TABLE Worker ADD BANK_ACCOUNT CHAR(12) NOT NULL DEFAULT "";
+
+-- Modify Column
+
+ALTER TABLE Worker MODIFY BANK_ACCOUNT INT(10) NOT NULL DEFAULT 0;
+
+DESCRIBE Worker;
+
+ALTER TABLE Worker MODIFY BANK_ACCOUNT VARCHAR(12) NOT NULL DEFAULT 0;
+ALTER TABLE Worker MODIFY FIRST_NAME VARCHAR(12) NOT NULL DEFAULT "";
+ALTER TABLE Worker MODIFY LAST_NAME VARCHAR(12) NOT NULL DEFAULT "";
+ALTER TABLE Worker MODIFY DEPARTMENT VARCHAR(12) NOT NULL DEFAULT "";
+
+DESCRIBE Worker;
+
+-- Change column name / rename column
+
+ALTER TABLE Worker change column BANK_ACCOUNT ACCOUNT_NUMBER VARCHAR(15) NOT NULL DEFAULT "";
+
+
+-- DROP COLUMN
+
+ALTER TABLE Worker ADD TEMP CHAR(12) NOT NULL DEFAULT "";
+
+
+alter table Worker drop column TEMP;
+
+-- Rename the table
+
+alter table Worker RENAME to worker_details;
